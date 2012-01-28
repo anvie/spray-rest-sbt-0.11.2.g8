@@ -4,5 +4,5 @@
 
 2. Run Jetty
 
-        jetty-run
+        container:start
 
