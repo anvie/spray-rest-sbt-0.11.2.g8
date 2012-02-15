@@ -4,6 +4,7 @@ Spray, Akka, MongoDB, and SBT 0.11.2 project
 [g8](http://github.com/n8han/giter8) This is a bare bones REST template implemented using the [Spray](http://spray.cc) framework on top of Akka.  Persistence is handled with [MongoDB](http://mongodb.com).
 
 Included [sbt-eclipse](https://github.com/typesafehub/sbteclipse) for generating eclipse project.
+And [sbt-idea](https://github.com/mpeltonen/sbt-idea) for generating IntelliJ project.
 
 Usage
 ------
@@ -23,4 +24,14 @@ In a shell, run the following:
     > container:start
     
 You should be able to browse to a access a JSON body for your resource with 'curl -vv localhost:8080/$resourceName$'
+
+To create Eclipse project:
+
+    $ sbt eclipse
+
+To create IntelliJ Idea project:
+
+    $ sbt gen-idea
+
+
 
