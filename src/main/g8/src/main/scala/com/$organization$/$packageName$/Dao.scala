@@ -1,9 +1,6 @@
 package com.$organization$.$packageName$
 
-import _root_.akka.dispatch.Future
 import akka.dispatch.Future
-import org.bson.types.ObjectId
-import com.mongodb.casbah.commons.MongoDBObject
 import org.bson.types.ObjectId
 import com.mongodb.casbah.commons.MongoDBObject
 import com.$organization$.$packageName$.model._

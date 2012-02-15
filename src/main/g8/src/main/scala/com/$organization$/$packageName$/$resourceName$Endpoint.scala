@@ -3,29 +3,22 @@ package com.$organization$.$packageName$
 import cc.spray.Directives
 import model.{$resourceName$SearchParams, $resourceName$Wrapper, $resourceName$}
 import net.liftweb.json.JsonParser._
-import cc.spray.directives.LongNumber
 import net.liftweb.json.DefaultFormats
 import net.liftweb.json.Serialization._
 import org.bson.types.ObjectId
 import akka.event.EventHandler
 import cc.spray.http._
-import HttpHeaders._
-import HttpMethods._
-import StatusCodes._
 import MediaTypes._
 import com.$organization$.$packageName$.model._
 import com.$organization$.$packageName$.response._
 import util._
 import com.$organization$.$packageName$.directives._
 
-/**
- * @author chris carrier
- */
 
 trait $resourceName$Endpoint extends Directives with ValidationDirectives {
   implicit val formats = DefaultFormats + new ObjectIdSerializer
 
-  final val NOT_FOUND_MESSAGE = "resource.notFound"
+  final val NOT_FOUND_MESSAGE = "resource not found"
   final val INTERNAL_ERROR_MESSAGE = "error"
 
   def JsonContent(content: String) = HttpContent(ContentType(`application/json`), content)
@@ -114,26 +107,25 @@ trait $resourceName$Endpoint extends Directives with ValidationDirectives {
                       }
                     }
               }
-              } ~
-              parameters('name?, 'description?) { (name, description) =>
-                get { ctx =>
-
-                  service.search$resourceName$($resourceName$SearchParams(name, description)).onTimeout(f => {
-                    ctx.fail(StatusCodes.InternalServerError, write(ErrorResponse(1, ctx.request.path, List(INTERNAL_ERROR_MESSAGE))))
-                            }).onComplete(f => {
-                              f.result.get match {
-                                case content: Some[List[$resourceName$]] => ctx.complete(write(SuccessResponse[$resourceName$](1, ctx.request.path, content.get.length, None, content.get)))
-                                case None => ctx.fail(StatusCodes.NotFound, write(ErrorResponse(1, ctx.request.path, List(NOT_FOUND_MESSAGE))))
-                              }
-                            }).onException {
-                              case e => {
-                                e.printStackTrace()
-                                ctx.fail(StatusCodes.InternalServerError, write(ErrorResponse(1, ctx.request.path, List(e.getMessage))))
-                              }
-                            }
-                }
-              }
-            }
+           } ~
+           parameters('name?, 'description?) { (name, description) =>
+             get { ctx =>
+               service.search$resourceName$($resourceName$SearchParams(name, description)).onTimeout(f => {
+                 ctx.fail(StatusCodes.InternalServerError, write(ErrorResponse(1, ctx.request.path, List(INTERNAL_ERROR_MESSAGE))))
+               }).onComplete(f => {
+                 f.result.get match {
+                   case content: Some[List[$resourceName$]] => ctx.complete(write(SuccessResponse[$resourceName$](1, ctx.request.path, content.get.length, None, content.get)))
+                   case None => ctx.fail(StatusCodes.NotFound, write(ErrorResponse(1, ctx.request.path, List(NOT_FOUND_MESSAGE))))
+                 }
+               }).onException {
+                 case e => {
+                   e.printStackTrace()
+                   ctx.fail(StatusCodes.InternalServerError, write(ErrorResponse(1, ctx.request.path, List(e.getMessage))))
+                 }
+               }
+             }
+           }
+         }
       }
   }
 
