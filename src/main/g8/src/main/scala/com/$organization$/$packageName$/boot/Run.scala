@@ -1,18 +1,6 @@
 package com.$organization$.$packageName$.boot
 
-/**
- * @author chris_carrier
- * @version 8/4/11
- */
-
-
-import org.eclipse.jetty.server._
-import org.eclipse.jetty.server.nio
-import nio.SelectChannelConnector
-import org.slf4j.LoggerFactory
 import org.eclipse.jetty.servlet.ServletContextHandler
-import org.eclipse.jetty.servlet.ServletHolder
-import org.eclipse.jetty.servlet.{ServletContextHandler, ServletHolder}
 import cc.spray.connectors.Servlet30ConnectorServlet
 
 import java.util.Calendar

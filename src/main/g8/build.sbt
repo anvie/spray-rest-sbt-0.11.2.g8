@@ -24,10 +24,10 @@ libraryDependencies ++= Seq(
   "cc.spray" % "spray-base" % "0.8.0" % "compile" withSources(),
   "cc.spray" % "spray-server" % "0.8.0" % "compile" withSources(),
   //AKKA
-  "se.scalablesolutions.akka" % "akka-actor" % "1.3-RC6",
-  "se.scalablesolutions.akka" % "akka-http" % "1.3-RC6",
-  "se.scalablesolutions.akka" % "akka-testkit" % "1.3-RC6",
-  "se.scalablesolutions.akka" % "akka-slf4j" % "1.3-RC6",
+  "se.scalablesolutions.akka" % "akka-actor" % "1.3.1",
+  "se.scalablesolutions.akka" % "akka-http" % "1.3.1",
+  "se.scalablesolutions.akka" % "akka-testkit" % "1.3.1",
+  "se.scalablesolutions.akka" % "akka-slf4j" % "1.3.1",
   //LIFT-JSON
   "net.liftweb" % "lift-json-ext_2.9.0-1" % "2.4-M2",
   "net.liftweb" % "lift-json_2.9.0-1" % "2.4-M2",
