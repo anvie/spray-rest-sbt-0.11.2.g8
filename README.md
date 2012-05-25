@@ -25,6 +25,9 @@ In a shell, run the following:
     
 You should be able to browse to a access a JSON body for your resource with 'curl -vv localhost:8080/$resourceName$'
 
+If you see any error like "...must specify akka.mode bla... bla.. bla...", just export AKKA_MODE=dev (for development mode)
+or specify akka.mode as java parameter.
+
 To create Eclipse project:
 
     $ sbt eclipse
